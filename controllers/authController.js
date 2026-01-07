@@ -14,6 +14,8 @@ const client = new twilio(accountSid, authToken);
 const otpStore = new Map(); // Store OTPs in memory: phoneNumber -> otp
 
 exports.sendOtp = async (req, res) => {
+        console.log('sendOtp called', req.body); // <-- add this
+
     const { phoneNumber } = req.body;
     if (!phoneNumber) {
         return res.status(400).json({ error: 'Phone number is required' });
