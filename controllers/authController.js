@@ -33,8 +33,8 @@ exports.sendOtp = async (req, res) => {
         otpStore.set(phoneNumber, otp);
         // Clear OTP after 5 minutes
         setTimeout(() => otpStore.delete(phoneNumber), 5 * 60 * 1000);
+        res.status(200).json({ success: true, message: 'OTP sent to Your Number' });
 
-        res.status(200).json({ message: 'OTP sent successfully' });
     } catch (error) {
         console.error('Error sending OTP:', error);
         res.status(500).json({ error: 'Failed to send OTP' });
